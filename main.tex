@@ -1,0 +1,87 @@
+\documentclass[12pt,a4paper,fontset=none]{ctexart}
+
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\geometry{
+  top=25mm,
+  bottom=25mm,
+  left=24mm,
+  right=24mm
+}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=black,
+  citecolor=black,
+  pdfborder={0 0 0}
+}
+
+\setCJKmainfont{Songti SC}
+\setCJKsansfont{Heiti SC}
+\setmainfont{Times New Roman}
+\renewcommand{\arraystretch}{1.25}
+
+\definecolor{ZJUBlue}{HTML}{003C7D}
+
+\newcommand{\coverfield}[1]{
+  \noindent
+  \begin{tabular}{@{}>{\raggedleft\arraybackslash}p{46mm}@{\hspace{4mm}}p{82mm}@{}}
+    \textbf{#1} & \hrulefill
+  \end{tabular}
+  \par\vspace{7mm}
+}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{-8mm}
+
+  \makebox[92mm][c]{\includegraphics[width=92mm]{figures/name.png}}
+
+  \vspace{14mm}
+
+  \makebox[92mm][c]{\includegraphics[width=92mm]{figures/logo.png}}
+
+  \vspace{10mm}
+
+  {\sffamily\bfseries\fontsize{30pt}{42pt}\selectfont
+  软件工程\par
+  项目开发计划书\par}
+
+  \vspace{14mm}
+
+  \coverfield{项目名称}
+  \coverfield{指导教师}
+  \coverfield{学院专业}
+  \coverfield{小组成员}
+
+  \vfill
+
+  {年\hspace{12mm}月\hspace{12mm}日}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+
+\input{chapters/01-introduction}
+\input{chapters/02-project-overview}
+\input{chapters/03-scope-deliverables}
+\input{chapters/04-work-breakdown}
+\input{chapters/05-schedule}
+\input{chapters/06-organization}
+\input{chapters/07-quality-management}
+\input{chapters/08-risk-management}
+\input{chapters/09-communication}
+\input{chapters/appendix}
+
+\end{document}
