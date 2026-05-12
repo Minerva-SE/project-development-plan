@@ -23,9 +23,23 @@
   pdfborder={0 0 0}
 }
 
-\setCJKmainfont{Songti SC}
-\setCJKsansfont{Heiti SC}
-\setmainfont{Times New Roman}
+% 使用思源宋体（Noto Serif CJK SC）作为正文主字体
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+% 目录美化
+\usepackage{tocloft}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsubsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\bfseries}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{1.5em}
+\setlength{\cftsubsubsecindent}{3em}
+\setlength{\cftbeforesecskip}{2pt}
+\setlength{\cftbeforesubsecskip}{1pt}
+\setlength{\cftbeforesubsubsecskip}{1pt}
+
 \renewcommand{\arraystretch}{1.25}
 
 \definecolor{ZJUBlue}{HTML}{003C7D}
@@ -74,14 +88,23 @@
 \pagenumbering{arabic}
 
 \input{chapters/01-introduction}
+\clearpage
 \input{chapters/02-project-overview}
+\clearpage
 \input{chapters/03-scope-deliverables}
+\clearpage
 \input{chapters/04-work-breakdown}
+\clearpage
 \input{chapters/05-schedule}
+\clearpage
 \input{chapters/06-organization}
+\clearpage
 \input{chapters/07-quality-management}
+\clearpage
 \input{chapters/08-risk-management}
+\clearpage
 \input{chapters/09-communication}
+\clearpage
 \input{chapters/appendix}
 
 \end{document}
