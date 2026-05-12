@@ -7,6 +7,7 @@
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{fontspec}
 
 \geometry{
   top=25mm,
@@ -23,9 +24,6 @@
   pdfborder={0 0 0}
 }
 
-% 使用思源宋体（Noto Serif CJK SC）作为正文主字体
-\setCJKmainfont{Noto Serif CJK SC}
-\setCJKsansfont{Noto Sans CJK SC}
 % 目录美化
 \usepackage{tocloft}
 \renewcommand{\cftsecfont}{\bfseries}
@@ -40,6 +38,11 @@
 \setlength{\cftbeforesubsecskip}{1pt}
 \setlength{\cftbeforesubsubsecskip}{1pt}
 
+\setmainfont{texgyretermes-regular.otf}[
+  BoldFont = texgyretermes-bold.otf,
+  ItalicFont = texgyretermes-italic.otf,
+  BoldItalicFont = texgyretermes-bolditalic.otf
+]
 \renewcommand{\arraystretch}{1.25}
 
 \definecolor{ZJUBlue}{HTML}{003C7D}
