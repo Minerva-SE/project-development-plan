@@ -2,22 +2,71 @@
 
 \subsection{编写目的}
 
-说明本文档的编写目的、适用范围和目标读者。
+本文档是软件工程课程的项目设计 'Minerva: EEG 数据管理与科研伦理审核系统' 的开发计划书，旨在为本系统的开发工作提供全面、清晰的指导。其主要目的包括：明确各阶段的开发任务与交付物、规划迭代流程与人员分工、制定风险应对策略，以及为后续的系统设计、编码实现、测试验收提供统一依据。
+
+本计划书的目标读者主要包括以下三类人员：
+
+\begin{enumerate}
+  \item \textbf{项目指导教师}：了解项目整体规划与进度安排，对开发过程进行监督与评审。
+  \item \textbf{开发团队成员}：明确各自职责范围与任务交付节点，保障协作效率。
+  \item \textbf{系统运维人员}：掌握系统的运行环境与部署要求，为上线维护提供参考。
+\end{enumerate}
 
 \subsection{项目背景}
 
-说明项目来源、课程背景、业务背景和建设动机。
+\subsubsection{科研背景}
+
+在脑科学与脑机接口（Brain-Computer Interface, BCI）研究日益普及的背景下，高校实验室和基础科研团队所产生的脑电图（Electroencephalogram, EEG）数据量持续增长。EEG 信号作为一种非侵入式的神经活动记录手段，被广泛应用于认知神经科学、临床诊断、情绪识别及脑机接口等研究领域。然而，与 EEG 数据采集技术的快速发展相比，数据管理与治理方面的基础设施建设明显滞后。
+
+与此同时，涉及人类被试的脑电研究的伦理审查约束日益严格。依据《涉及人的生物医学研究伦理审查办法》（国家卫生和计划生育委员会令第 11 号）以及世界医学协会《赫尔辛基宣言》（Declaration of Helsinki）的基本原则，所有涉及人体的科学研究必须经由机构伦理委员会（Institutional Review Board, IRB）审查批准后方可实施，且须确保被试知情同意、个人数据保密及研究风险可控。国际通用的伦理合规框架——如 ICH-GCP（药物临床试验质量管理规范）中关于数据完整性与可追溯性的要求——亦对科研数据的管理提出了明确规范。然而在实际操作中，许多教学型实验室由于资源有限知情同意书的签署与存档缺乏统一管理，数据中包含的个人可识别信息（PII）也缺少系统化的脱敏与保护措施，这使得合规性保障成为当前 EEG 科研管理中亟待解决的关键问题。
+
+\subsubsection{行业现状}
+
+当前多数教学与基础科研场景中，EEG 数据的管理仍停留在原始文件级别的手工整理阶段，存在以下突出问题：
+
+\begin{enumerate}
+  \item \textbf{文件管理混乱}：数据文件命名不统一、存储分散，缺乏集中化的目录结构与版本控制机制，研究人员在不同课题间切换时常面临文件定位困难。
+  \item \textbf{元信息不完整}：采集参数、被试信息与实验条件等关键元数据常以非结构、非标准的方式记录，难以满足迁移实验的要求。
+  \item \textbf{质控记录缺失}：数据预处理与质量评估缺乏标准化流程，异常数据难以被及时发现与追溯，导致下游分析结果的可信度存疑。
+  \item \textbf{伦理授权不足}：涉及人体被试的脑电实验需通过科研伦理审查，但多数实验室尚未建立系统化的伦理审核与知情同意管理机制，合规性难以保障。
+  \item \textbf{访问行为不可追踪}：数据的访问、下载与共享缺少细粒度日志，一旦发生数据泄露或违规使用，无法有效溯源，存在个人可识别信息（Personally Identifiable Information, PII）泄露的风险。
+\end{enumerate}
+
+上述问题不仅制约了科研效率，更在学术合规性与个人隐私保护方面埋下了隐患。本项目正是在这一背景下启动，旨在构建一个面向教学与基础科研场景的 EEG 数据管理平台，集成数据解析、质量控制、伦理流程模拟、权限管理与全生命周期追溯等核心能力，从而提升实验室的科研数据治理水平，确保数据处理过程的学术严谨性与伦理合规性。
 
 \subsection{术语与缩略语}
 
 \begin{longtable}{|p{36mm}|p{116mm}|}
 \hline
-\textbf{术语} & \textbf{说明} \\
+\textbf{术语 / 缩略语} & \textbf{说明} \\
 \hline
- &  \\
+\endfirsthead
+\hline
+\textbf{术语 / 缩略语} & \textbf{说明} \\
+\hline
+\endhead
+\hline
+\endfoot
+EEG (Electroencephalogram) & 脑电图，通过放置在头皮表面的电极记录大脑皮层神经元群体电活动的生理信号。 \\
+\hline
+BCI (Brain-Computer Interface) & 脑机接口，一种在人脑与外部设备之间建立直接通信通道的技术。 \\
+\hline
+PII (Personally Identifiable Information) & 个人可识别信息，指可用于直接或间接识别特定自然人身份的数据，如姓名、身份证号、生物特征等。 \\
+\hline
+科研伦理审核 & 针对涉及人类被试的科学研究项目，在实验开展前由伦理委员会对其研究方案、知情同意流程及风险收益进行审查与批准的过程。 \\
+\hline
+数据质控 (Quality Control) & 对采集或处理过程中的数据进行系统性检查与评估，以识别并排除噪声、伪迹、缺失值等质量问题，确保数据满足后续分析的可靠性要求。 \\
 \hline
 \end{longtable}
 
 \subsection{参考资料}
 
-列出课程要求、项目资料、技术规范和参考文档。
+\begin{enumerate}
+  \item 中华人民共和国国家标准 GB/T 8567-2006《计算机软件文档编制规范》。
+  \item 本项目《软件需求规格说明书》。
+  \item Brain Imaging Data Structure (BIDS) 规范，\url{https://bids.neuroimaging.io}。
+  \item IEEE Std 830-1998, \textit{IEEE Recommended Practice for Software Requirements Specifications}。
+  \item 国家卫生和计划生育委员会令第 11 号《涉及人的生物医学研究伦理审查办法》。
+  \item 世界医学协会 (WMA)《赫尔辛基宣言》(Declaration of Helsinki)。
+  \item ICH E6 (R2), \textit{Guideline for Good Clinical Practice}（药物临床试验质量管理规范）。
+\end{enumerate}
