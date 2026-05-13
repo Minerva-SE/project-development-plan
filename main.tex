@@ -47,42 +47,66 @@
 
 \definecolor{ZJUBlue}{HTML}{003C7D}
 
-\newcommand{\coverfield}[1]{
+\newcommand{\coverfield}[2]{
   \noindent
-  \begin{tabular}{@{}>{\raggedleft\arraybackslash}p{46mm}@{\hspace{4mm}}p{82mm}@{}}
-    \textbf{#1} & \hrulefill
+  \begin{tabular}{@{}>{\raggedleft\arraybackslash}p{42mm}@{\hspace{6mm}}p{98mm}@{}}
+    {\heiti\fontsize{16pt}{19pt}\selectfont #1} &
+    \begin{minipage}[t]{98mm}
+      \centering
+      {\songti\fontsize{14pt}{19pt}\selectfont #2\par}
+      \vspace{-0.8mm}
+      \rule{\linewidth}{0.5pt}
+    \end{minipage}
   \end{tabular}
-  \par\vspace{7mm}
+  \par\vspace{3mm}
+}
+
+\newcommand{\covermembers}[3]{
+  \noindent
+  \begin{tabular}{@{}>{\raggedleft\arraybackslash}p{42mm}@{\hspace{6mm}}p{98mm}@{}}
+    {\heiti\fontsize{16pt}{19pt}\selectfont #1} &
+    \begin{minipage}[t]{98mm}
+      \centering
+      {\songti\fontsize{14pt}{19pt}\selectfont #2\par}
+      \vspace{-0.8mm}
+      \rule{\linewidth}{0.5pt}
+    \end{minipage}
+    \\[2mm]
+    &
+    \begin{minipage}[t]{98mm}
+      \centering
+      {\songti\fontsize{14pt}{19pt}\selectfont #3\par}
+      \vspace{-0.8mm}
+      \rule{\linewidth}{0.5pt}
+    \end{minipage}
+  \end{tabular}
+  \par\vspace{3mm}
 }
 
 \begin{document}
 
 \begin{titlepage}
   \centering
-  \vspace*{-8mm}
+  \vspace*{-12mm}
 
   \makebox[92mm][c]{\includegraphics[width=92mm]{figures/name.png}}
 
-  \vspace{14mm}
+  \vspace{6mm}
 
   \makebox[92mm][c]{\includegraphics[width=92mm]{figures/logo.png}}
 
-  \vspace{10mm}
+  \vspace{4mm}
 
   {\sffamily\bfseries\fontsize{25pt}{30pt}\selectfont
   软件工程\par
   项目开发计划书\par}
 
-  \vspace{14mm}
+  \vspace{8mm}
 
-  \coverfield{项目名称}
-  \coverfield{指导教师}
-  \coverfield{学院专业}
-  \coverfield{小组成员}
-
-  \vfill
-
-  {年\hspace{12mm}月\hspace{12mm}日}
+  \coverfield{项目名称}{Minerva：全链路的轻量级 EEG 数据管理平台}
+  \coverfield{指导教师}{尹建伟}
+  \coverfield{学院}{计算机科学与技术学院}
+  \covermembers{小组成员}{李文耀，张晋恺，刘鲍非，田红瑾，张磊}{杨吉祥，周左艺，刘谦，施兴睿}
 \end{titlepage}
 
 \tableofcontents
