@@ -7,6 +7,7 @@
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{fontspec}
 
 \geometry{
   top=25mm,
@@ -23,18 +24,63 @@
   pdfborder={0 0 0}
 }
 
-\setmainfont{TeX Gyre Termes}
+% 目录美化
+\usepackage{tocloft}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsubsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\bfseries}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{1.5em}
+\setlength{\cftsubsubsecindent}{3em}
+\setlength{\cftbeforesecskip}{2pt}
+\setlength{\cftbeforesubsecskip}{1pt}
+\setlength{\cftbeforesubsubsecskip}{1pt}
 
+\setmainfont{texgyretermes-regular.otf}[
+  BoldFont = texgyretermes-bold.otf,
+  ItalicFont = texgyretermes-italic.otf,
+  BoldItalicFont = texgyretermes-bolditalic.otf
+]
 \renewcommand{\arraystretch}{1.25}
 
 \definecolor{ZJUBlue}{HTML}{003C7D}
 
-\newcommand{\coverfield}[1]{
+\newcommand{\coverfield}[2]{
   \noindent
-  \begin{tabular}{@{}>{\raggedleft\arraybackslash}p{46mm}@{\hspace{4mm}}p{82mm}@{}}
-    \textbf{#1} & \hrulefill
+  \begin{tabular}{@{}>{\raggedleft\arraybackslash}p{42mm}@{\hspace{6mm}}p{98mm}@{}}
+    {\heiti\fontsize{16pt}{19pt}\selectfont #1} &
+    \begin{minipage}[t]{98mm}
+      \centering
+      {\songti\fontsize{14pt}{19pt}\selectfont #2\par}
+      \vspace{-0.8mm}
+      \rule{\linewidth}{0.5pt}
+    \end{minipage}
   \end{tabular}
-  \par\vspace{7mm}
+  \par\vspace{3mm}
+}
+
+\newcommand{\covermembers}[3]{
+  \noindent
+  \begin{tabular}{@{}>{\raggedleft\arraybackslash}p{42mm}@{\hspace{6mm}}p{98mm}@{}}
+    {\heiti\fontsize{16pt}{19pt}\selectfont #1} &
+    \begin{minipage}[t]{98mm}
+      \centering
+      {\songti\fontsize{14pt}{19pt}\selectfont #2\par}
+      \vspace{-0.8mm}
+      \rule{\linewidth}{0.5pt}
+    \end{minipage}
+    \\[2mm]
+    &
+    \begin{minipage}[t]{98mm}
+      \centering
+      {\songti\fontsize{14pt}{19pt}\selectfont #3\par}
+      \vspace{-0.8mm}
+      \rule{\linewidth}{0.5pt}
+    \end{minipage}
+  \end{tabular}
+  \par\vspace{3mm}
 }
 
 \begin{document}
@@ -45,11 +91,11 @@
 
   \makebox[92mm][c]{\includegraphics[width=92mm]{figures/name.png}}
 
-  \vspace{14mm}
+  \vspace{10mm}
 
   \makebox[92mm][c]{\includegraphics[width=92mm]{figures/logo.png}}
 
-  \vspace{10mm}
+  \vspace{6mm}
 
   {\sffamily\bfseries\fontsize{25pt}{30pt}\selectfont
   软件工程\par
@@ -57,14 +103,13 @@
 
   \vspace{14mm}
 
-  \coverfield{项目名称}
-  \coverfield{指导教师}
-  \coverfield{学院专业}
-  \coverfield{小组成员}
+  \coverfield{项目名称}{Minerva：全链路的轻量级 EEG 数据管理平台}
+  \coverfield{指导教师}{尹建伟}
+  \coverfield{学院}{计算机科学与技术学院}
+  \covermembers{小组成员}{李文耀，张晋恺，刘鲍非，田红瑾，张磊}{杨吉祥，周左艺，刘谦，施兴睿}
 
-  \vfill
-
-  {年\hspace{12mm}月\hspace{12mm}日}
+  \vspace{10mm}
+  {2026年5月14日}
 \end{titlepage}
 
 \tableofcontents
@@ -73,14 +118,21 @@
 \pagenumbering{arabic}
 
 \input{chapters/01-introduction}
+\clearpage
 \input{chapters/02-project-overview}
+\clearpage
 \input{chapters/03-scope-deliverables}
+\clearpage
 \input{chapters/04-work-breakdown}
-\input{chapters/05-schedule}
+\clearpage
 \input{chapters/06-organization}
+\clearpage
 \input{chapters/07-quality-management}
+\clearpage
 \input{chapters/08-risk-management}
+\clearpage
 \input{chapters/09-communication}
+\clearpage
 \input{chapters/appendix}
 
 \end{document}
