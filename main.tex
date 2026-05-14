@@ -8,6 +8,38 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{fontspec}
+\usepackage{enumerate}
+\usepackage{listings}
+\lstdefinelanguage{json}{
+  basicstyle=\ttfamily\small,
+  numbers=left,
+  numberstyle=\small,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false,
+  literate=
+   *{0}{{{\color{blue}0}}}{1}
+    {1}{{{\color{blue}1}}}{1}
+    {2}{{{\color{blue}2}}}{1}
+    {3}{{{\color{blue}3}}}{1}
+    {4}{{{\color{blue}4}}}{1}
+    {5}{{{\color{blue}5}}}{1}
+    {6}{{{\color{blue}6}}}{1}
+    {7}{{{\color{blue}7}}}{1}
+    {8}{{{\color{blue}8}}}{1}
+    {9}{{{\color{blue}9}}}{1}
+    {\{}{{{\color{red}\{}}}{1}
+    {\}}{{{\color{red}\}}}}{1}
+    {[}{{{\color{red}[}}}{1}
+    {]}{{{\color{red}]}}}{1}
+}
+\lstset{
+  basicstyle=\ttfamily\small,
+  numbers=left,
+  numberstyle=\tiny,
+  frame=single,
+  breaklines=true
+}
 
 \geometry{
   top=25mm,
@@ -97,11 +129,11 @@
 
   \vspace{6mm}
 
-  {\sffamily\bfseries\fontsize{25pt}{30pt}\selectfont
+  {\sffamily\bfseries\fontsize{20pt}{20pt}\selectfont
   软件工程\par
   项目开发计划书\par}
 
-  \vspace{8mm}
+  \vspace{10mm}
 
   \coverfield{项目名称}{Minerva：全链路的轻量级 EEG 数据管理平台}
   \coverfield{指导教师}{尹建伟}
@@ -121,8 +153,6 @@
 \clearpage
 \input{chapters/02-project-overview}
 \clearpage
-\input{chapters/03-scope-deliverables}
-\clearpage
 \input{chapters/04-work-breakdown}
 \clearpage
 \input{chapters/06-organization}
@@ -132,7 +162,7 @@
 \input{chapters/08-risk-management}
 \clearpage
 \input{chapters/09-communication}
-\clearpage
-\input{chapters/appendix}
+
+
 
 \end{document}
